@@ -1,0 +1,43 @@
+{% load static %}
+<!-- Top Background Image Wrapper -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'home/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+<body id="top" class="abcd" style="background-image:url('{% static 'home/images/demo/backgrounds/wrose.jpg' %}');">
+<style>
+  .abcd{
+    background-position:cover;
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    }
+   #top{
+    background-color:white;
+   }
+</style>
+<div class="wrapper row1" style="background-color:white;">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+        <h1><a href="/"><font color="black">ROSE BLOOMS</font></a></h1>
+      </div>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li class="active"><a href="/"><font color="black">Home</font></a></li>
+          {% if user.is_authenticated %}
+          <li>Hi {{user.username}}</li>
+          <li class="active"><a href="{% url 'logout' %}"><font color="black">Logout</font></a></li>
+          {% else %}
+          <li class="active"><a href="{% url 'login' %}"><font color="black">Login</font></a></li>
+          <li class="active"><a href="{% url 'register' %}"><font color="black">Register</font></a></li>
+          {% endif %}
+          </ul>
+      </nav>
+    </header>
+</div>
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+{% block content %}
+{% endblock %}
+<!-- JAVASCRIPTS -->
+<script src="{% static 'home/layout/scripts/jquery.min.js' %}"></script>
+<script src="{% static 'home/layout/scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'home/layout/scripts/jquery.mobilemenu.js' %}"></script>
+</body>

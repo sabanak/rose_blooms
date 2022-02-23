@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<!--<body>-->
+      <ul class="nospace group btmspace-80">
+        {% for i in pr %}
+            <li class="one_third">
+                <br><br><br><br>
+              <figure><img src="{{i.img.url}}" alt="" style="height:300;width:350;">
+                    <figcaption>
+                        <h6 class="heading">{{i.name}}</h6>
+                        <p>{{i.desc}}</p>
+                        <p>{{i.price}} Rs</p>
+                        <p>stock left : {{i.stock}}</p>
+                    </figcaption>
+              </figure>
+            </li>
+         {% endfor %}
+<!--            <li><a href="{% url 'home' %}"><button class="btn btn-secondary"><< Back to Home</button></a></li>-->
+      </ul>
+<!--</body>-->
+</html>
+{% endblock %}

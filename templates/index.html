@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title >ROSE BLOOMS</title>
+<style>
+.heading{
+color:black;
+}
+.a{
+    color:black;
+    }
+<!--.abcd{-->
+<!--    height:100%;-->
+<!--    background-position:center;-->
+<!--    background-repeat:no-repeat;-->
+<!--    background-size:cover;-->
+<!--    }-->
+.abc{
+    background-color:white;
+}
+.dropbtn{
+  background-color:black;
+  color:white;
+  padding:10px;
+  font-size:16px;
+  border:none;
+  cursor:pointer;
+  }
+  .dropdown{
+    position:relative;
+    display:inline-block;
+    padding-left:30px;
+  }
+  .dropdown-content{
+    display:none;
+    position:absolute;
+    background-color:white;
+    min-width:160px;
+    box-shadow:0px 8px 16px 0px rgba(0,0,0,0,2);
+    z-index:1;
+  }
+  .dropdown-content a{
+    color:black;
+    padding:12px 16px;
+    text-decoration:none;
+    display:block;
+  }
+  .dropdown-content a:hover{
+    background-color:lightgreen;
+  }
+  .dropdown:hover .dropdown-content{
+    display:block;
+  }
+  .dropdown:hover .dropbtn{
+    background-color:black;
+  }
+</style>
+</head>
+<!-- Top Background Image Wrapper -->
+<!--<body id="top">-->
+<div class="dropdown">
+  <button class="dropbtn">FILTER ITEM</button>
+  <div class="dropdown-content">
+    <a href="/">ALL PRODUCTS</a>
+    {% for i in ct %}
+    <a href={{i.get_url}}>{{i.name}}</a><br>
+    {% endfor %}
+  </div>
+</div>
+  <div class="wrapper row0">
+    <div id="topbar" class="hoc clear">
+            <div class="fl_right">
+              <form action="{% url 'search' %}" method="get">
+                <fieldset>
+                  <legend>Quick Search:</legend>
+                  <input type="text" placeholder="Enter search term" name="q">
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </fieldset>
+              </form>
+            </div>
+    </div>
+  </div>
+  <div id="pageintro" class="hoc clear">
+    <article>
+      <h3 class="heading">ROSE  BLOOMS</h3>
+      <p class="a">Rose Blooms Gives You High Quality Low Priced Rose Flowers At Your Doorstep</p>
+    </article>
+  </div>
+<!-- End Top Background Image Wrapper -->
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <section id="introblocks">
+      <ul class="nospace group btmspace-80">
+        {% for i in pr %}
+        <li class="one_third">
+          <figure><img src="{{i.img.url}}" alt="image" style="height:400px;width:300px;">
+            <figcaption>
+              <h6 class="heading">{{i.name}}</h6>
+              <p>{{i.desc}}</p>
+              <p>{{i.price}} RS</p>
+              <p>Stock Left:{{i.stock}}</p>
+            </figcaption>
+          </figure>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
+</div>
+{% endblock %}
+<!--</body>-->
+</html>
